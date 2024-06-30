@@ -1,0 +1,23 @@
+#IMPORTS
+
+from numpy import *
+import pandas as pd 
+import matplotlib.pyplot as plt
+import uproot
+import numpy as np
+
+#abrimos datos COMPLETOS (dos 3 anos)
+file0 = uproot.open('/scratch48/xabier.cid/Sexaquark/Sexaquark_ll_lc_2018.root')
+tree_data0=file0["TupleXib_signal/DecayTree;1"]; 
+
+file2 = uproot.open('/scratch48/xabier.cid/Sexaquark/Sexaquark_ll_lc_2017.root')
+tree_data2=file2["TupleXib_signal/DecayTree;1"]; 
+
+file3 = uproot.open('/scratch48/xabier.cid/Sexaquark/Sexaquark_ll_lc_2016.root')
+tree_data3=file3["TupleXib_signal/DecayTree;1"]; 
+pd_data3=tree_data3.arrays(library='pd')
+
+#abrimos montecarlo
+file1 = uproot.open('/scratch48/xabier.cid/Sexaquark/Sexaquark_ll_lc_MC.root')
+tree_data1=file1["TupleXib_signal;1"]; 
+pd_data1=tree_data1.arrays(library='pd')
